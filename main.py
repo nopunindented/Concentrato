@@ -3,12 +3,14 @@ import time
 import subprocess
 from subprocess import check_output
 from threading import Timer
+from PyQt5 import QtCore, QtGui, QtWidgets
 from GUIfile import *
 
 
-class StudyFocusConcentratApp(Ui_Form):
-    def __init__(self, Form):
-        self.setupUi(Form)
+class StudyFocusConcentratApp(Ui_MainWindow):
+    def __init__(self, window):
+        self.setupUi(window)
+        super().
 
         self.pushButton.clicked.connect(self.get_study_time)
         self.pushButton_2.clicked.connect(self.according_to_the_breaktime)
@@ -27,20 +29,21 @@ class StudyFocusConcentratApp(Ui_Form):
                 setattr
 
     def get_study_time(self):
-        study_periods = int(self.plainTextEdit.text())
+        self.study_periods = int(self.lineEdit.text())
+        print(self.lineEdit.text())
         global end_of_study_periodt
-        end_of_study_periodt = time.time() + study_periods
+        end_of_study_periodt = time.time() + self.study_periods
 
     def according_to_the_breaktime(self):
         global break_time_is
-        break_time_is = int(self.plainTextEdit_2.text())
+        break_time_is = int(self.lineEdit_2.text())
 
     def run_program(self):
-        studying = True
+        self.studying = True
         global still_studying
         still_studying = True
-        while studying:
-            while time.time() < end_of_study_periodt:
+        while self.studying:
+            while time.time() < self.end_of_study_periodt:
                 self.check_if_program_running()
             time.sleep(break_time_is)
 
@@ -96,8 +99,8 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    app.exec_()
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
