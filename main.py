@@ -75,6 +75,7 @@ def stop():
     global studying
     studying = False
     window.destroy()
+    exit()
 
 
 start = Button(window, text="Start", font="Arial, 12",
