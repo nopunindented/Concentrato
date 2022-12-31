@@ -11,47 +11,69 @@
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QPlainTextEdit, QPushButton, QSizePolicy,
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QLineEdit, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QStatusBar,
     QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(262, 300)
-        self.pushButton = QPushButton(Form)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(356, 294)
+        self.actionNew_Window = QAction(MainWindow)
+        self.actionNew_Window.setObjectName(u"actionNew_Window")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.pushButton = QPushButton(self.centralwidget)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(0, 20, 75, 24))
-        self.pushButton_2 = QPushButton(Form)
+        self.pushButton.setGeometry(QRect(0, 0, 75, 24))
+        self.pushButton_2 = QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(0, 50, 75, 24))
-        self.plainTextEdit = QPlainTextEdit(Form)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setGeometry(QRect(90, 20, 121, 21))
-        self.plainTextEdit_2 = QPlainTextEdit(Form)
-        self.plainTextEdit_2.setObjectName(u"plainTextEdit_2")
-        self.plainTextEdit_2.setGeometry(QRect(90, 50, 121, 21))
-        self.pushButton_3 = QPushButton(Form)
+        self.pushButton_2.setGeometry(QRect(0, 30, 75, 24))
+        self.pushButton_3 = QPushButton(self.centralwidget)
         self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(0, 270, 75, 31))
-        self.pushButton_4 = QPushButton(Form)
+        self.pushButton_3.setGeometry(QRect(0, 220, 75, 31))
+        self.pushButton_4 = QPushButton(self.centralwidget)
         self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(180, 270, 81, 31))
+        self.pushButton_4.setGeometry(QRect(270, 220, 81, 31))
+        self.lineEdit = QLineEdit(self.centralwidget)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setGeometry(QRect(80, 1, 113, 20))
+        self.lineEdit_2 = QLineEdit(self.centralwidget)
+        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.lineEdit_2.setGeometry(QRect(80, 30, 113, 21))
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 356, 22))
+        self.menuFile = QMenu(self.menubar)
+        self.menuFile.setObjectName(u"menuFile")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Form)
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionNew_Window)
 
-        QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Study Time", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Form", u"Break Time", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Form", u"Run", None))
-        self.pushButton_4.setText(QCoreApplication.translate("Form", u"Stop", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionNew_Window.setText(QCoreApplication.translate("MainWindow", u"New Window", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Study Time", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Break Time", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Run", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+        self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
     # retranslateUi
 
