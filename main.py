@@ -24,7 +24,8 @@ def end_check():
 
 def check_if_programs_running():
     global processname
-    processname = ['Discord.exe', 'Spotify.exe']
+    processname = ['Discord.exe', 'Spotify.exe',
+                   'Steam.exe', 'EpicGamesLauncher.exe']
     tasks_running = check_output('tasklist')
     for i in range(0, len(processname)):
         if processname[i] in str(tasks_running):
@@ -41,10 +42,10 @@ window = Tk()
 window.geometry("600x200")
 
 
-name = Entry(window, width=50, font=('Arial 24'))
+name = Entry(window, width=20, font=('Arial 18'))
 name.pack(padx=10, pady=10)
 
-names = Entry(window, width=50, font=('Arial 24'))
+names = Entry(window, width=20, font=('Arial 18'))
 names.pack(padx=10, pady=10)
 
 
